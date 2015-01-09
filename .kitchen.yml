@@ -1,0 +1,35 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: wikiserver
+    driver:
+      vm_hostname: www
+      network:
+        - ["forwarded_port", {guest: 80, host: 8080}]
+      customize:
+        memory: 2048
+        cpus: 2
+    run_list:       
+       - recipe[apt]
+       - recipe[apache2::default]
+       - recipe[java::oracle]
+       - recipe[php]
+       - recipe[mysqld]
+       - recipe[imagemagick]
+       - recipe[webserver::mediawiki]
+       - recipe[webserver::config_mysql]
+       - recipe[webserver::default]
+    attributes:
+       wikiserver:
+         name: wiki
+         version: "0.0.1"
+
+         

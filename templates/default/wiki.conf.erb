@@ -1,0 +1,21 @@
+<VirtualHost *:80>
+
+	ServerName <%= node['apache']['servername'] %>
+
+	ServerAdmin <%= node['apache']['admin_mail'] %>
+	DocumentRoot <%= node['apache']['htmldocroot'] %>
+	LogLevel <%= node['apache']['loglevel'] %>
+
+	ErrorLog ${APACHE_LOG_DIR}/<%= node['apache']['servername'] %>_error.log
+	CustomLog ${APACHE_LOG_DIR}/<%= node['apache']['servername'] %>_access.log combined
+
+	DirectoryIndex index.html index.php 
+   	<directory <%= node['apache']['htmldocroot'] %> >
+		Options +Indexes +FollowSymLinks +MultiViews
+		Require all granted
+   	</directory>
+	UseCanonicalName Off
+	ProxyRequests Off
+	RewriteEngine On
+	
+</VirtualHost>
