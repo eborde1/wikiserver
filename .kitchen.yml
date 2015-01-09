@@ -24,9 +24,9 @@ suites:
        - recipe[php]
        - recipe[mysqld]
        - recipe[imagemagick]
-       - recipe[webserver::mediawiki]
-       - recipe[webserver::config_mysql]
-       - recipe[webserver::default]
+       - recipe[wikiserver::mediawiki]
+       - recipe[wikiserver::config_mysql]
+       - recipe[wikiserver::default]
     attributes:
        wikiserver:
          name: wiki

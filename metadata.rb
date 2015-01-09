@@ -15,6 +15,6 @@ depends 'php'
 depends 'imagemagick'
 depends 'mysqld'
 
-recipe "webserver::mediawiki", "Download and Unzip of Mediawiki"
-recipe "webserver::config_mysql", "Configuration of MySQL for Mediawiki"
+recipe "wikiserver::mediawiki", "Download and Unzip of Mediawiki"
+recipe "wikiserver::config_mysql", "Configuration of MySQL for Mediawiki"
 
